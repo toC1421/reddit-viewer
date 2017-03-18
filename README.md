@@ -8,3 +8,9 @@
 - upvote,downvote
 - thumbnail
 - design :innocent:
+
+## Run
+
+1. `git pull`
+2. `npm install`
+3. `npm start`

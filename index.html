@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>Reddit Viewer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+<link rel="stylesheet" href="./style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+</head>
+<body>
+  <div class="ui visible inverted vertical left sidebar menu" id="menubar">
+    <a class="item" v-model="subreddit" v-for="subreddit in subreddits" v-on:click="load(subreddit)" >
+     {{ subreddit.title }}
+    </a>
+    <div class="ui input">
+      <input type="text" v-model="inputText" placeholder="Add Subreddit..." v-on:keyup.enter="addSubreddit()">
+    </div>
+  </div>
+</div>
+<div class="ui container" id="reddit">
+  <!--
+  <input v-model="subreddit" v-on:keyup.enter="loadSubreddit(subreddit)">
+  <button v-on:click="loadSubreddit(subreddit)">GO!</button>
+  -->
+  <span class="error">{{ errorMessage }}</span>
+  <ul>
+    <li v-for="submission in submissions">
+      <a v-bind:href="submission.url" target="_blank">{{ submission.title }}</a>
+    </li>
+  </ul>
+</div>
+<script src="./main.js"></script>
+</body>
+</html>
